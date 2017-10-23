@@ -13,7 +13,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'namelen error' or message.tags == 'namechars error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
@@ -23,7 +23,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'aliaslen error' or message.tags == 'aliaschars error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
@@ -33,7 +33,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'email error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
@@ -46,7 +46,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'pwlen error' or message.tags == 'pwconf error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
@@ -56,7 +56,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'bdaytype error' or message.tags == 'bdaytime error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
@@ -78,7 +78,7 @@
             {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'login error' or message.tags == 'pwconf error' %}
-                    <p class="flash">{{ message }}</p>
+                    <p class="flash right">{{ message }}</p>
                 {% endif %}
             {% endfor %}
             {% endif %}
