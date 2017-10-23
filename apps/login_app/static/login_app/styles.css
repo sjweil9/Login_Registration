@@ -1,0 +1,29 @@
+.flash{
+    color: red;
+}
+.headerband{
+    margin-bottom: 2em;
+}
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
+}
+div.card{
+    padding: 10px;
+}
+div.allquotes{
+    overflow-y: scroll;
+    height: 40em;
+}
+div.favorites{
+    height: 20em;
+    overflow-y: scroll;
+}
+p.quotelist{
+    margin-bottom: 1em;
+}
+p.count{
+    margin-bottom: 2em;
+}

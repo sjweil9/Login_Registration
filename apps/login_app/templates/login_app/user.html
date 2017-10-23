@@ -1,0 +1,14 @@
+{% extends 'login_app/base.html' %}
+{% block title %}{{user.alias}}'s Posted Quotes{% endblock %}
+{% block content %}
+<div class="row justify-content-end headerband">
+    <div class="col-3 right"><a href="/quotes">Dashboard</a> | <a href="/logout">Logout</a></div>
+</div>
+<h3>Posts by {{user.alias}}</h3>
+<p class="count">Count: {% if quotes %}{{ quotes|length }}{% endif %}</p>
+{% if quotes %}
+{% for quote in quotes %}
+<p class="quotelist"><span class="flash">{{quote.quoteby}}</span>: {{quote.quotetext}}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}

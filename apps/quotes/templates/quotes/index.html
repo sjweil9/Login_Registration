@@ -1,0 +1,63 @@
+{% extends 'login_app/base.html' %}
+{% block title %}Quotes{% endblock %}
+{% block content %}
+<div class="row justify-content-end headerband">
+    <div class="col-3 right"><a href="/logout">Logout</a></div>
+</div>
+<h1>Welcome, {{user.alias}}!</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Quotable Quotes</h3>
+        <div class="allquotes">
+            {% if quotes %}
+            {% for quote in quotes %}
+            <div class="card">
+                <p class="card-text"><span class="flash">{{quote.quoteby}}</span>: {{quote.quotetext}}</p>
+                <p class="card-text">Posted by: <a href="/users/{{quote.postedby.id}}">{{quote.postedby.alias}}</a></p>
+                <p class="card-text"><a href="/quotes/favorite/{{quote.id}}" class="btn btn-primary">Add to My Favorites</a></p>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Your Favorites</h3>
+        <div class="favorites">
+            {% if favorites %}
+            {% for favorite in favorites %}
+            <div class="card">
+                <p class="card-text"><span class="flash">{{favorite.quoteby}}</span>: {{favorite.quotetext}}</p>
+                <p class="card-text">Posted by: <a href="/users/{{favorite.postedby.id}}">{{favorite.postedby.alias}}</a></p>
+                <p class="card-text"><a href="/quotes/unfavorite/{{favorite.id}}" class="btn btn-primary">Remove From My Favorites</a></p>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form">
+            <form action="/quotes/add" method="post">
+                {% csrf_token %}
+                <h4 class="left">Contribute a Quote:</h4>
+                <p class="left">Quoted By:</p> 
+                <p class="left"><input type="text" name="quoteby"></p>
+                {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'quotebylen error' or message.tags == 'quotebychars error' %}
+                        <p class="flash">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+                <p class="left">Message: </p>
+                <p class="left"><textarea name="quotetext" cols="30" rows="5"></textarea></p>
+                {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'quotetextlen error' %}
+                        <p class="flash">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+                <p class="left"><input type='submit' value='Submit'></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
